@@ -1,0 +1,3 @@
+﻿lovedin.org, www.lovedin.org {
+    reverse_proxy lovedin:8080
+}
