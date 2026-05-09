@@ -3,7 +3,7 @@
 }
 
 https://lovedin.org, https://www.lovedin.org {
-    reverse_proxy lovedin:8080   # ← use service name
+    reverse_proxy 127.0.0.1:8080   # ← use service name
 
     header {
         Strict-Transport-Security "max-age=31536000; includeSubDomains"
