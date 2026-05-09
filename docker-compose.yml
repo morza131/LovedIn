@@ -26,9 +26,9 @@
     image: caddy:2
     container_name: lovedin-caddy
     restart: unless-stopped
-    # ports:
-    #   - "80:80"
-    #   - "443:443"
+    ports:
+      - "80:80"
+      - "443:443"
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - lovedin_caddy_data:/data
