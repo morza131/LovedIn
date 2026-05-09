@@ -30,7 +30,7 @@
       - "80:80"
       - "443:443"
     volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./Caddyfile:/opt/LovedIn/Caddyfile
       - lovedin_caddy_data:/data
       - lovedin_caddy_config:/config
     depends_on:
