@@ -6,10 +6,10 @@ FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
 
 COPY . .
-RUN dotnet restore "LovedIn.Web/LovedIn.Web.csproj"
-RUN dotnet publish "LovedIn.Web/LovedIn.Web.csproj" -c Release -o /app/publish
+RUN dotnet restore "LovedIn.csproj"
+RUN dotnet publish "LovedIn.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=build /app/publish .
-ENTRYPOINT ["dotnet", "LovedIn.Web.dll"]
+ENTRYPOINT ["dotnet", "LovedIn.dll"]

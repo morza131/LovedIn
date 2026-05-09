@@ -2,7 +2,7 @@
   lovedin:
     build:
       context: .
-      dockerfile: LovedIn.Web/Dockerfile
+      dockerfile: Dockerfile
     container_name: lovedin-web
     restart: unless-stopped
     environment:
