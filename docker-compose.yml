@@ -5,25 +5,35 @@
       dockerfile: Dockerfile
     container_name: lovedin-web
     restart: unless-stopped
+    develop:
+      watch:
+        - path: .
+          action: rebuild
+          target: /app
+          ignore:
+            - bin/
+            - obj/
+            - .git/
     environment:
       ASPNETCORE_ENVIRONMENT: Production
       ASPNETCORE_URLS: http://+:8080
     expose:
-      - "8080"
+      - "8080"     
 
   caddy:
     image: caddy:2
     container_name: lovedin-caddy
     restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
+    # ports:
+    #   - "80:80"
+    #   - "443:443"
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - lovedin_caddy_data:/data
       - lovedin_caddy_config:/config
     depends_on:
       - lovedin
+    network_mode: host
 
 volumes:
   lovedin_caddy_data:

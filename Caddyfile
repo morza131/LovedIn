@@ -1,3 +1,15 @@
-﻿lovedin.org, www.lovedin.org {
-    reverse_proxy lovedin:8080
+﻿http://lovedin.org, http://www.lovedin.org {
+    redir https://{host}{uri} permanent
+}
+
+https://lovedin.org, https://www.lovedin.org {
+    reverse_proxy lovedin:8080   # ← use service name
+
+    header {
+        Strict-Transport-Security "max-age=31536000; includeSubDomains"
+        X-Content-Type-Options nosniff
+        X-Frame-Options DENY
+    }
+
+    encode gzip zstd
 }
