@@ -18,7 +18,9 @@
       ASPNETCORE_ENVIRONMENT: Production
       ASPNETCORE_URLS: http://+:8080
     expose:
-      - "8080"     
+      - "8080"
+    networks:
+      - lovedin-net
 
   caddy:
     image: caddy:2
@@ -33,8 +35,12 @@
       - lovedin_caddy_config:/config
     depends_on:
       - lovedin
-    network_mode: host
+    networks:
+      - lovedin-net
 
 volumes:
   lovedin_caddy_data:
   lovedin_caddy_config:
+networks:
+  lovedin-net:
+    driver: bridge
